@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:TimeBook/DataCore/OneDay+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:TimeBook/DataCore/OneDay+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:TimeBook/DataCore/Reminder+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:TimeBook/DataCore/Reminder+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:TimeBook.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>
