@@ -2,22 +2,20 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="OneDay" representedClassName="OneDay" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="done" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="meditationCoffee" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="meditationTime" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="notDone" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="listReminder" toMany="YES" minCount="6" maxCount="6" deletionRule="Nullify" destinationEntity="Reminder" inverseName="oneDay" inverseEntity="Reminder" syncable="YES"/>
+        <attribute name="done" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
+        <attribute name="meditationCoffee" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="meditationTime" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="notDone" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
+        <relationship name="listReminder" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reminder" inverseName="oneDay" inverseEntity="Reminder" syncable="YES"/>
     </entity>
     <entity name="Reminder" representedClassName="Reminder" syncable="YES" codeGenerationType="class">
-        <attribute name="hour" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="meditation" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="negative" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="positive" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="toDo" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="oneDay" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OneDay" inverseName="listReminder" inverseEntity="OneDay" syncable="YES"/>
+        <attribute name="negative" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
+        <attribute name="positive" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
+        <attribute name="toDo" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
+        <relationship name="oneDay" maxCount="1" deletionRule="Nullify" destinationEntity="OneDay" inverseName="listReminder" inverseEntity="OneDay" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Reminder" positionX="-54" positionY="-9" width="128" height="135"/>
-        <element name="OneDay" positionX="-36" positionY="45" width="128" height="135"/>
+        <element name="OneDay" positionX="-36" positionY="45" width="128" height="133"/>
+        <element name="Reminder" positionX="-298.7109375" positionY="132.6796875" width="128" height="103"/>
     </elements>
 </model>

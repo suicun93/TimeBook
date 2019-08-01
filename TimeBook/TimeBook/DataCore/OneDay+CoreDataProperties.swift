@@ -2,7 +2,7 @@
 //  OneDay+CoreDataProperties.swift
 //  
 //
-//  Created by Hoang Duc on 7/31/19.
+//  Created by Hoang Duc on 8/1/19.
 //
 //
 

@@ -14,7 +14,7 @@ class OneDayViewController: UIViewController {
     var date:Date?
     var listMeditationByHour:[String] = []
     var listOneDay = [OneDay]()
-    var listReminder: [Reminder]?
+    var oneDay:OneDay?
     
     private var appDelegate = UIApplication.shared.delegate as! AppDelegate
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -27,18 +27,43 @@ class OneDayViewController: UIViewController {
     }
     
     @IBAction func saveButton(_ sender: Any) {
-        
+        let entity = NSEntityDescription.entity(forEntityName: "OneDay",in: context)!
+        let oneDay = NSManagedObject(entity: entity,insertInto: context)
+        oneDay.setValue(date, forKey: "date")
+        do {
+            try context.save()
+            backButton(self)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
     }
+    
+//    func saveData(oneDay:NSManagedObject)
+//    {
+//        oneDay.setValue("RDC", forKey: "username")
+//        oneDay.setValue("1234", forKey: "password")
+//        oneDay.setValue("21", forKey: "age")
+//
+//        print("Storing Data..")
+//        do {
+//            try context.save()
+//        } catch {
+//            print("Storing data Failed")
+//        }
+//    }
+//
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         listMeditationByHour = Config.loadListMeditationByHour()
+        loadData()
     }
     
     func loadData() {
         for n in listOneDay {
             if n.date == date {
-                listReminder = n.listReminder?.allObjects as? [Reminder]
+                oneDay = n
             }
         }
     }
@@ -50,7 +75,6 @@ class OneDayViewController: UIViewController {
             dateFm.dateFormat = "dd-MM-yyyy"
             dateLbl.text = dateFm.string(from: date)
         }
-        loadData()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -91,6 +115,19 @@ extension OneDayViewController: UITableViewDataSource,UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "oneDayCell") as! OneDayTableViewCell
         cell.hourTxt.text = Hour.allValues[indexPath.row].rawValue
         cell.meditationTxt.text = listMeditationByHour[indexPath.row]
+        if let oneDay = oneDay {
+            let dateFm = DateFormatter()
+            dateFm.dateFormat = "dd-MM-yyyy"
+            cell.minusTxt.text = dateFm.string(from: oneDay.date!)
+        }
+        
+//        if let reminder = listReminder {
+//            if reminder.count > indexPath.row {
+//                cell.minusTxt.text = reminder[indexPath.row].negative
+//                cell.plusText.text = reminder[indexPath.row].positive
+//                cell.toDoTxt.text = reminder[indexPath.row].toDo
+//            }
+//        }
         return cell
     }
     

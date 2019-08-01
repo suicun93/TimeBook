@@ -2,7 +2,7 @@
 //  Reminder+CoreDataProperties.swift
 //  
 //
-//  Created by Hoang Duc on 7/31/19.
+//  Created by Hoang Duc on 8/1/19.
 //
 //
 
@@ -16,8 +16,6 @@ extension Reminder {
         return NSFetchRequest<Reminder>(entityName: "Reminder")
     }
 
-    @NSManaged public var hour: String?
-    @NSManaged public var meditation: String?
     @NSManaged public var negative: String?
     @NSManaged public var positive: String?
     @NSManaged public var toDo: String?

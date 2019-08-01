@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3346DD3122EB22C3003F7984 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3346DD3022EB22C3003F7984 /* TableViewCell.swift */; };
 		33B2171322EF3B5200BAB826 /* Data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33B2171122EF3B5200BAB826 /* Data.xcdatamodeld */; };
-		33B2171522F003E000BAB826 /* OneDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B2171422F003E000BAB826 /* OneDay.swift */; };
 		33B2171722F0189900BAB826 /* OneDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B2171622F0189900BAB826 /* OneDayViewController.swift */; };
 		33B2171922F034E000BAB826 /* OneDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B2171822F034E000BAB826 /* OneDayTableViewCell.swift */; };
 		33B2171B22F047D700BAB826 /* DataCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B2171A22F047D700BAB826 /* DataCore.swift */; };
@@ -28,7 +27,6 @@
 		154216D855C5C86679D4C14E /* Pods-TimeBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeBook.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimeBook/Pods-TimeBook.release.xcconfig"; sourceTree = "<group>"; };
 		3346DD3022EB22C3003F7984 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		33B2171222EF3B5200BAB826 /* Data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Data.xcdatamodel; sourceTree = "<group>"; };
-		33B2171422F003E000BAB826 /* OneDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDay.swift; sourceTree = "<group>"; };
 		33B2171622F0189900BAB826 /* OneDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDayViewController.swift; sourceTree = "<group>"; };
 		33B2171822F034E000BAB826 /* OneDayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDayTableViewCell.swift; sourceTree = "<group>"; };
 		33B2171A22F047D700BAB826 /* DataCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCore.swift; sourceTree = "<group>"; };
@@ -75,7 +73,6 @@
 			children = (
 				33CCB14622EB18E0006DACFE /* Constants.swift */,
 				33B2171122EF3B5200BAB826 /* Data.xcdatamodeld */,
-				33B2171422F003E000BAB826 /* OneDay.swift */,
 				33B2171A22F047D700BAB826 /* DataCore.swift */,
 			);
 			path = DataCore;
@@ -269,7 +266,6 @@
 				33CCB12F22EAEB0C006DACFE /* AppDelegate.swift in Sources */,
 				33B2171322EF3B5200BAB826 /* Data.xcdatamodeld in Sources */,
 				33CCB13122EAEB0C006DACFE /* DailyView.swift in Sources */,
-				33B2171522F003E000BAB826 /* OneDay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
