@@ -14,6 +14,7 @@ class OneDayViewController: UIViewController {
     var date:Date?
     var listMeditationByHour:[String] = []
     var listOneDay = [OneDay]()
+    var listReminder = [Reminder]()
     var oneDay:OneDay?
     
     private var appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -27,31 +28,34 @@ class OneDayViewController: UIViewController {
     }
     
     @IBAction func saveButton(_ sender: Any) {
-        let entity = NSEntityDescription.entity(forEntityName: "OneDay",in: context)!
-        let oneDay = NSManagedObject(entity: entity,insertInto: context)
-        oneDay.setValue(date, forKey: "date")
         do {
-            try context.save()
+            try insertOneDay()
             backButton(self)
         } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
+            print(error)
         }
+        
     }
     
-//    func saveData(oneDay:NSManagedObject)
-//    {
-//        oneDay.setValue("RDC", forKey: "username")
-//        oneDay.setValue("1234", forKey: "password")
-//        oneDay.setValue("21", forKey: "age")
-//
-//        print("Storing Data..")
-//        do {
-//            try context.save()
-//        } catch {
-//            print("Storing data Failed")
-//        }
-//    }
-//
+    func insertOneDay() throws {
+        let oneDay = OneDay(context: self.context)
+        oneDay.done = "done"
+        oneDay.notDone = "notDone"
+        oneDay.date = date
+        for n in 0...5 {
+            let cell = view.viewWithTag(n+123) as! OneDayTableViewCell
+            let reminder = Reminder(context: self.context)
+            reminder.negative = cell.minusTxt.text
+            reminder.positive = cell.plusText.text
+            reminder.toDo = cell.toDoTxt.text
+            reminder.indexxx = Int16(n)
+//            oneDay.removeFromListReminder(reminder)
+            oneDay.addToListReminder(reminder)
+        }
+        self.context.insert(oneDay)
+        try self.context.save()
+    }
+
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,8 +70,43 @@ class OneDayViewController: UIViewController {
                 oneDay = n
             }
         }
+        listReminder = [Reminder]()
+        if let reminder = oneDay?.listReminder {
+            for player in reminder {
+                listReminder.append(player as! Reminder)
+            }
+            listReminder.sort { (r1, r2) -> Bool in
+                return r1.indexxx < r2.indexxx
+            }
+        }
     }
     
+    
+}
+
+extension OneDayViewController: UITableViewDataSource,UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 6
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "oneDayCell") as! OneDayTableViewCell
+        cell.tag = indexPath.row+123
+        cell.hourTxt.text = Hour.allValues[indexPath.row].rawValue
+        cell.meditationTxt.text = listMeditationByHour[indexPath.row]
+        if listReminder.count > indexPath.row {
+            cell.minusTxt.text = listReminder[indexPath.row].negative
+            cell.plusText.text = listReminder[indexPath.row].positive
+            cell.toDoTxt.text = listReminder[indexPath.row].toDo
+        }
+        
+        return cell
+    }
+
+}
+
+// Supporter
+extension OneDayViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let date = date {
@@ -104,32 +143,4 @@ class OneDayViewController: UIViewController {
         scrollView.contentInset = contentInset
         scrollView.scrollIndicatorInsets = contentInset
     }
-}
-
-extension OneDayViewController: UITableViewDataSource,UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "oneDayCell") as! OneDayTableViewCell
-        cell.hourTxt.text = Hour.allValues[indexPath.row].rawValue
-        cell.meditationTxt.text = listMeditationByHour[indexPath.row]
-        if let oneDay = oneDay {
-            let dateFm = DateFormatter()
-            dateFm.dateFormat = "dd-MM-yyyy"
-            cell.minusTxt.text = dateFm.string(from: oneDay.date!)
-        }
-        
-//        if let reminder = listReminder {
-//            if reminder.count > indexPath.row {
-//                cell.minusTxt.text = reminder[indexPath.row].negative
-//                cell.plusText.text = reminder[indexPath.row].positive
-//                cell.toDoTxt.text = reminder[indexPath.row].toDo
-//            }
-//        }
-        return cell
-    }
-    
-
 }
