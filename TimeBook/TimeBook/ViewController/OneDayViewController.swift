@@ -15,6 +15,7 @@ class OneDayViewController: UIViewController {
     var listMeditationByHour:[String] = []
     var listOneDay = [OneDay]()
     var listReminder = [Reminder]()
+    var cells:[OneDayTableViewCell]!
     var oneDay:OneDay?
     
     private var appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -37,29 +38,34 @@ class OneDayViewController: UIViewController {
         
     }
     
+    func getAllOneDayCell() -> [OneDayTableViewCell] {
+        var list = cells!
+        list.sort { (cell1, cell2) -> Bool in
+            cell1.index < cell2.index
+        }
+        return list
+    }
+    
     func insertOneDay() throws {
         let oneDay = OneDay(context: self.context)
         oneDay.done = "done"
         oneDay.notDone = "notDone"
         oneDay.date = date
-        for n in 0...5 {
-            let cell = view.viewWithTag(n+123) as! OneDayTableViewCell
-            let reminder = Reminder(context: self.context)
-            reminder.negative = cell.minusTxt.text
-            reminder.positive = cell.plusText.text
-            reminder.toDo = cell.toDoTxt.text
-            reminder.indexxx = Int16(n)
-//            oneDay.removeFromListReminder(reminder)
-            oneDay.addToListReminder(reminder)
+        for cell in getAllOneDayCell() {
+                let reminder = Reminder(context: self.context)
+                reminder.negative = cell.minusTxt.text
+                reminder.positive = cell.plusText.text
+                reminder.toDo = cell.toDoTxt.text
+                reminder.indexxx = Double(cell.index)
+                oneDay.addToListReminder(reminder)
         }
         self.context.insert(oneDay)
         try self.context.save()
     }
-
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        cells = [OneDayTableViewCell]()
         listMeditationByHour = Config.loadListMeditationByHour()
         loadData()
     }
@@ -91,7 +97,7 @@ extension OneDayViewController: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "oneDayCell") as! OneDayTableViewCell
-        cell.tag = indexPath.row+123
+        cell.index = indexPath.row
         cell.hourTxt.text = Hour.allValues[indexPath.row].rawValue
         cell.meditationTxt.text = listMeditationByHour[indexPath.row]
         if listReminder.count > indexPath.row {
@@ -99,7 +105,9 @@ extension OneDayViewController: UITableViewDataSource,UITableViewDelegate {
             cell.plusText.text = listReminder[indexPath.row].positive
             cell.toDoTxt.text = listReminder[indexPath.row].toDo
         }
-        
+        if !cells.contains(cell) {
+            cells.append(cell)
+        }
         return cell
     }
 

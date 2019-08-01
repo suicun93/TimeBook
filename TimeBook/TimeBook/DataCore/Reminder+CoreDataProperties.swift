@@ -19,7 +19,7 @@ extension Reminder {
     @NSManaged public var negative: String?
     @NSManaged public var positive: String?
     @NSManaged public var toDo: String?
-    @NSManaged public var indexxx: Int16
+    @NSManaged public var indexxx: Double
     @NSManaged public var oneDay: OneDay?
 
 }

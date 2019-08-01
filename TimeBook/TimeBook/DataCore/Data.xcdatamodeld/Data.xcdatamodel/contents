@@ -9,7 +9,7 @@
         <relationship name="listReminder" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reminder" inverseName="oneDay" inverseEntity="Reminder" syncable="YES"/>
     </entity>
     <entity name="Reminder" representedClassName="Reminder" syncable="YES" codeGenerationType="class">
-        <attribute name="indexxx" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="indexxx" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="negative" attributeType="String" syncable="YES"/>
         <attribute name="positive" attributeType="String" syncable="YES"/>
         <attribute name="toDo" attributeType="String" syncable="YES"/>

@@ -15,6 +15,8 @@ class OneDayTableViewCell: UITableViewCell {
     @IBOutlet weak var plusText: UITextField!
     @IBOutlet weak var minusTxt: UITextField!
     @IBOutlet weak var toDoTxt: UITextField!
+    var index = 0
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
