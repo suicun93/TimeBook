@@ -17,6 +17,7 @@ class OneDayViewController: UIViewController {
     var listReminder = [Reminder]()
     var cells:[OneDayTableViewCell]!
     var oneDay:OneDay?
+    var sumUpCell:SumUpTableViewCell?
     
     private var appDelegate = UIApplication.shared.delegate as! AppDelegate
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -48,9 +49,13 @@ class OneDayViewController: UIViewController {
     
     func insertOneDay() throws {
         let oneDay = OneDay(context: self.context)
-        oneDay.done = "done"
-        oneDay.notDone = "notDone"
         oneDay.date = date
+        if sumUpCell != nil {
+            oneDay.done = sumUpCell!.doneTxt.text
+            oneDay.notDone = sumUpCell!.notDoneTxt.text
+            oneDay.meditationTime = Int32(sumUpCell!.mediTime.text!) ?? 0
+            oneDay.meditationCoffee = sumUpCell!.mediCoffee.isOn
+        }
         for cell in getAllOneDayCell() {
                 let reminder = Reminder(context: self.context)
                 reminder.negative = cell.minusTxt.text
@@ -91,24 +96,58 @@ class OneDayViewController: UIViewController {
 }
 
 extension OneDayViewController: UITableViewDataSource,UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.init(displayP3Red: 43/255, green: 104/255, blue: 151/255, alpha: 1)
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.white
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "6 times in 1 Day"
+        } else {
+            return "Sum up daily"
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        if section == 0 {
+            return 6
+        }
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "oneDayCell") as! OneDayTableViewCell
-        cell.index = indexPath.row
-        cell.hourTxt.text = Hour.allValues[indexPath.row].rawValue
-        cell.meditationTxt.text = listMeditationByHour[indexPath.row]
-        if listReminder.count > indexPath.row {
-            cell.minusTxt.text = listReminder[indexPath.row].negative
-            cell.plusText.text = listReminder[indexPath.row].positive
-            cell.toDoTxt.text = listReminder[indexPath.row].toDo
+        if indexPath.section == 0 {
+            let cell = scrollView.dequeueReusableCell(withIdentifier: "oneDayCell") as! OneDayTableViewCell
+            cell.index = indexPath.row
+            cell.hourTxt.text = Hour.allValues[indexPath.row].rawValue
+            cell.meditationTxt.text = listMeditationByHour[indexPath.row]
+            if listReminder.count > indexPath.row {
+                cell.minusTxt.text = listReminder[indexPath.row].negative
+                cell.plusText.text = listReminder[indexPath.row].positive
+                cell.toDoTxt.text = listReminder[indexPath.row].toDo
+            }
+            if !cells.contains(cell) {
+                cells.append(cell)
+            }
+            return cell
+        } else {
+            let cell = scrollView.dequeueReusableCell(withIdentifier: "dailyCell") as! SumUpTableViewCell
+            if let oneDay = oneDay {
+                cell.doneTxt.text = oneDay.done ?? ""
+                cell.notDoneTxt.text = oneDay.notDone ?? ""
+                cell.mediTime.text = "\(oneDay.meditationTime)"
+                cell.mediCoffee.isOn = oneDay.meditationCoffee
+            }
+            if sumUpCell == nil {
+                sumUpCell = cell
+            }
+            return cell
         }
-        if !cells.contains(cell) {
-            cells.append(cell)
-        }
-        return cell
     }
 
 }
