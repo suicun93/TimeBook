@@ -123,7 +123,7 @@ extension OneDayViewController: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 1500
+            return 600
         }
         return 180
     }
