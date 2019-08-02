@@ -1,0 +1,60 @@
+
+/* Class = "UILabel"; text = "Not Done"; ObjectID = "1v9-Qt-zjJ"; */
+"1v9-Qt-zjJ.text" = "今日の反省点";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "67E-rI-z7j"; */
+"67E-rI-z7j.text" = "日";
+
+/* Class = "UILabel"; text = "Meditation"; ObjectID = "7hq-Ju-ghh"; */
+"7hq-Ju-ghh.text" = "美徳";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "8rN-CP-8IP"; */
+"8rN-CP-8IP.text" = "-";
+
+/* Class = "UILabel"; text = "Medi Coffee"; ObjectID = "DeW-6v-ZBc"; */
+"DeW-6v-ZBc.text" = "コーヒー瞑想";
+
+/* Class = "UILabel"; text = "cham ngon"; ObjectID = "LFg-Nh-ElB"; */
+"LFg-Nh-ElB.text" = "cham ngon";
+
+/* Class = "UILabel"; text = "Own your Day"; ObjectID = "Xho-b3-vYi"; */
+"Xho-b3-vYi.text" = "時は金なり";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "Zu8-Rv-MTk"; */
+"Zu8-Rv-MTk.normalTitle" = "戻る";
+
+/* Class = "UILabel"; text = "Change your meditation by hour"; ObjectID = "aIC-Wp-Nq4"; */
+"aIC-Wp-Nq4.text" = "セッティング";
+
+/* Class = "UITabBarItem"; title = "Daily"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "Daily";
+
+/* Class = "UILabel"; text = "Own your Life"; ObjectID = "av4-di-6qm"; */
+"av4-di-6qm.text" = "Own your Life";
+
+/* Class = "UILabel"; text = "+"; ObjectID = "azt-c7-M0j"; */
+"azt-c7-M0j.text" = "+";
+
+/* Class = "UILabel"; text = "Medi Time"; ObjectID = "b3y-kP-95q"; */
+"b3y-kP-95q.text" = "時間";
+
+/* Class = "UITabBarItem"; title = "Calendar"; ObjectID = "cPa-gy-q4n"; */
+"cPa-gy-q4n.title" = "Calendar";
+
+/* Class = "UITextField"; text = "8:00"; ObjectID = "mXs-Rn-mPQ"; */
+"mXs-Rn-mPQ.text" = "8:00";
+
+/* Class = "UILabel"; text = "ToDo"; ObjectID = "oyg-ut-aDJ"; */
+"oyg-ut-aDJ.text" = "ToDo";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "qsY-p8-rYh"; */
+"qsY-p8-rYh.text" = "時間";
+
+/* Class = "UILabel"; text = "Done"; ObjectID = "sZu-C9-V4a"; */
+"sZu-C9-V4a.text" = "今日 良かったこと";
+
+/* Class = "UILabel"; text = "Hour"; ObjectID = "xWT-gK-iTG"; */
+"xWT-gK-iTG.text" = "時間";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "yku-23-GVn"; */
+"yku-23-GVn.normalTitle" = "保存";

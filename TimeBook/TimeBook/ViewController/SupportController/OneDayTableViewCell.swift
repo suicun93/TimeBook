@@ -12,9 +12,9 @@ class OneDayTableViewCell: UITableViewCell {
 
     @IBOutlet weak var hourTxt: UITextField!
     @IBOutlet weak var meditationTxt: UITextField!
-    @IBOutlet weak var plusText: UITextField!
-    @IBOutlet weak var minusTxt: UITextField!
-    @IBOutlet weak var toDoTxt: UITextField!
+    @IBOutlet weak var plusText: UITextView!
+    @IBOutlet weak var toDoTxt: UITextView!
+    @IBOutlet weak var minusTxt: UITextView!
     var index = 0
     
     override func awakeFromNib() {
@@ -27,5 +27,12 @@ class OneDayTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        hourTxt.text = ""
+        meditationTxt.text = ""
+        plusText.text = ""
+        minusTxt.text = ""
+        toDoTxt.text = ""
+    }
 }

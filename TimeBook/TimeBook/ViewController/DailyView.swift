@@ -35,8 +35,8 @@ extension DailyView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let alert = UIAlertController(title: "Select your meditation at \(Hour.allValues[indexPath.row].rawValue)",
-            message: "It's recommended you keep in mind your meditation.",
+        let alert = UIAlertController(title: "\(Hour.allValues[indexPath.row].rawValue)時の瞑想を選んでください。",
+            message: "",
             preferredStyle: .actionSheet)
         
         for n in ChamNgon.allValues {

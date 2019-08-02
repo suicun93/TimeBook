@@ -99,6 +99,7 @@ extension OneDayViewController: UITableViewDataSource,UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
+    
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = UIColor.init(displayP3Red: 43/255, green: 104/255, blue: 151/255, alpha: 1)
         let header = view as! UITableViewHeaderFooterView
@@ -118,6 +119,13 @@ extension OneDayViewController: UITableViewDataSource,UITableViewDelegate {
             return 6
         }
         return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 1500
+        }
+        return 180
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
