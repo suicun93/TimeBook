@@ -130,6 +130,9 @@ extension OneDayViewController: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
+            if cells.count > indexPath.row {
+                return cells[indexPath.row]
+            }
             let cell = scrollView.dequeueReusableCell(withIdentifier: "oneDayCell") as! OneDayTableViewCell
             cell.index = indexPath.row
             cell.hourTxt.text = Hour.allValues[indexPath.row].rawValue
@@ -144,6 +147,9 @@ extension OneDayViewController: UITableViewDataSource,UITableViewDelegate {
             }
             return cell
         } else {
+            if sumUpCell != nil {
+                return sumUpCell!
+            }
             let cell = scrollView.dequeueReusableCell(withIdentifier: "dailyCell") as! SumUpTableViewCell
             if let oneDay = oneDay {
                 cell.doneTxt.text = oneDay.done ?? ""

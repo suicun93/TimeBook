@@ -65,6 +65,8 @@ public class Config {
         let content = UNMutableNotificationContent()
         content.title = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String
         content.body = contents
+        content.sound = .default
+        content.badge = 1
         
         let request = UNNotificationRequest(
             identifier: hour.rawValue, content: content, trigger: trigger
