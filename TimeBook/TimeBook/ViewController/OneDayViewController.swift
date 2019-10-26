@@ -91,8 +91,6 @@ class OneDayViewController: UIViewController {
             }
         }
     }
-    
-    
 }
 
 extension OneDayViewController: UITableViewDataSource,UITableViewDelegate {

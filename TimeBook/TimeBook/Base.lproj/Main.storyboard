@@ -435,7 +435,6 @@
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zSM-83-Nbi">
                                                             <rect key="frame" x="150" y="0.0" width="209" height="30"/>
-                                                            <color key="backgroundColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="textColor" red="0.46666666670000001" green="0.63921568630000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -467,7 +466,6 @@
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vw0-kf-Gc4">
                                                             <rect key="frame" x="150" y="0.0" width="209" height="30"/>
-                                                            <color key="backgroundColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="textColor" red="0.46666666670000001" green="0.63921568630000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -499,7 +497,6 @@
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8XT-zN-O2r">
                                                             <rect key="frame" x="150" y="0.0" width="209" height="30"/>
-                                                            <color key="backgroundColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="textColor" red="0.46666666670000001" green="0.63921568630000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -634,6 +631,7 @@
         <image name="icons8-facebook-like-50 (1)" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="s3L-99-Um6"/>
         <segue reference="nKS-bC-s07"/>
     </inferredMetricsTieBreakers>
 </document>
